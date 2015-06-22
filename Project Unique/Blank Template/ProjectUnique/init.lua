@@ -5,13 +5,14 @@
 projectuniqueversion = "DEV 1.5"
 
 --Require ALL the things! :D
-require "ProjectUnique.libraries.hump"
-require "ProjectUnique.Advanced"
-require "ProjectUnique.Imaging"
-require "ProjectUnique.Object"
-require "ProjectUnique.Room"
-require "ProjectUnique.Text"
-require "ProjectUnique.Input"
+local path = (...):gsub('%init$', '').. '.'
+require (path.."libraries.hump")
+require (path.."Advanced")
+require (path.."Imaging")
+require (path.."Object")
+require (path.."Room")
+require (path.."Text")
+require (path.."Input")
 
 --Require all the 'objects' under the "Resources/Objects" folder.
 local files = love.filesystem.getDirectoryItems("Resources/Objects")

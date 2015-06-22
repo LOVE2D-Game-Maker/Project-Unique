@@ -2,7 +2,7 @@
 --The following is it's "core" coding. ;)
 
 --Declare/define some variables
-projectuniqueversion = "DEV 1.5"
+projectuniqueversion = "DEV 1.6"
 
 --Require ALL the things! :D
 local path = (...):gsub('%init$', '').. '.'
@@ -13,6 +13,13 @@ require (path.."Object")
 require (path.."Room")
 require (path.."Text")
 require (path.."Input")
+
+--For the up-coming GUI functionality. ;)
+--[[function EnableGUI() --This makes GUI-support optional for those who don't need it. ;) ...It's a large file!
+	if Button == nil then --We use a random variable defined in the GUI class to check if it's been loaded. Because why not?
+		require (path.."GUI")
+	end
+end--]]
 
 --Require all the 'objects' under the "Resources/Objects" folder.
 local files = love.filesystem.getDirectoryItems("Resources/Objects")
@@ -40,6 +47,8 @@ GotoRoom(1) --Load the first room in the 'Rooms' table... if that wasn't obvious
 --------------------------------------------------------
 
 function love.update(dt)
+	GetMousePos()
+	
 	if Rooms[currentroom] ~= nil then
 		Rooms[currentroom]:Update(dt)
 	end
